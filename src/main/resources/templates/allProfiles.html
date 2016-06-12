@@ -42,29 +42,6 @@
 				</dl>
 			</div>
 			<div class="col-md-4">
-				<h3>Your LinkedIn Profile</h3>
-
-				<p>
-					Hello, <span th:text="${liprofile.firstName}">first name</span>!
-				</p>
-				<img th:src="${liprofile.profilePictureUrl}" class="img-responsive" />
-				<dl>
-					<dt>LinkedIn ID:</dt>
-					<dd>
-						<a th:href="${liprofile.publicProfileUrl}" target="_blank"
-							th:text="${liprofile.id}">profile id</a>
-					</dd>
-					<dt>Email Address:</dt>
-					<dd th:text="${liprofile.emailAddress}"></dd>
-					<dt>Headline:</dt>
-					<dd th:text="${liprofile.headline}"></dd>
-					<dt>Industry:</dt>
-					<dd th:text="${liprofile.industry}"></dd>
-					<dt>Summary:</dt>
-					<dd th:text="${liprofile.summary}"></dd>
-				</dl>
-			</div>
-			<div class="col-md-4">
 				<h3>Your Twitter Profile</h3>
 
 				<p>
@@ -90,6 +67,29 @@
 					</dd>
 				</dl>
 			</div>
+			<div class="col-md-4">
+				<h3>Your LinkedIn Profile</h3>
+
+				<p>
+					Hello, <span th:text="${liprofile.firstName}">first name</span>!
+				</p>
+				<img th:src="${liprofile.profilePictureUrl}" class="img-responsive" />
+				<dl>
+					<dt>LinkedIn ID:</dt>
+					<dd>
+						<a th:href="${liprofile.publicProfileUrl}" target="_blank"
+							th:text="${liprofile.id}">profile id</a>
+					</dd>
+					<dt>Email Address:</dt>
+					<dd th:text="${liprofile.emailAddress}"></dd>
+					<dt>Headline:</dt>
+					<dd th:text="${liprofile.headline}"></dd>
+					<dt>Industry:</dt>
+					<dd th:text="${liprofile.industry}"></dd>
+					<dt>Summary:</dt>
+					<dd th:text="${liprofile.summary}"></dd>
+				</dl>
+			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-4">
@@ -107,7 +107,6 @@
 
 
 			</div>
-			<div class="col-md-4"></div>
 			<div class="col-md-4">
 				<h3>Your Twitter Home Timeline</h3>
 
@@ -129,6 +128,7 @@
 					</ul>
 				</div>
 			</div>
+			<div class="col-md-4"></div>
 		</div>
 	</div>
 </body>
