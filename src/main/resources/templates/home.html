@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>Hello to the Aggregation Service Prototype</title>
+</head>
+<body>
+
+
+	<form th:action="@{/connect/twitter}" method="POST">
+		<div th:switch="${tw}">
+			<p th:case="true">Twitter already authenticated</p>
+			<p th:case="false">
+				<button type="submit">Connect with Twitter</button>
+			</p>
+		</div>
+		<p></p>
+
+	</form>
+	<form th:action="@{/connect/linkedin}" method="POST">
+		<div th:switch="${li}">
+			<p th:case="true">LinkedIn already authenticated</p>
+			<p th:case="false">
+				<button type="submit">Connect with LinkedIn</button>
+			</p>
+		</div>
+	</form>
+	<form action="/connect/facebook" method="POST">
+		<div th:switch="${fb}">
+			<p th:case="true">Facebook already authenticated</p>
+			<p th:case="false">
+				<input type="hidden" name="scope" value="user_posts" />
+				<button type="submit">Connect to Facebook</button>
+			</p>
+		</div>
+	</form>
+</body>
+</html>

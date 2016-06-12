@@ -1,0 +1,135 @@
+<html>
+<head>
+<title>Aggregation Service</title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+	crossorigin="anonymous"></link>
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+	integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
+	crossorigin="anonymous"></link>
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+	crossorigin="anonymous"></script>
+</head>
+<body>
+
+	<div class="container-fluid">
+
+		<div class="row">
+			<div class="col-md-4">
+				<h3>Your Facebook Profile</h3>
+				<p>
+					Hello, <span th:text="${fbprofile.firstName}">first name</span>!
+				</p>
+				<img th:src="${fbprofile.cover.source}" class="img-responsive"
+					width="100px" />
+				<dl>
+					<dt>Facebook ID:</dt>
+					<dd th:text="${fbprofile.id}"></dd>
+					<dt>Name:</dt>
+					<dd th:text="${fbprofile.name}"></dd>
+					<dt>Gender:</dt>
+					<dd th:text="${fbprofile.gender}"></dd>
+				</dl>
+			</div>
+			<div class="col-md-4">
+				<h3>Your LinkedIn Profile</h3>
+
+				<p>
+					Hello, <span th:text="${liprofile.firstName}">first name</span>!
+				</p>
+				<img th:src="${liprofile.profilePictureUrl}" class="img-responsive" />
+				<dl>
+					<dt>LinkedIn ID:</dt>
+					<dd>
+						<a th:href="${liprofile.publicProfileUrl}" target="_blank"
+							th:text="${liprofile.id}">profile id</a>
+					</dd>
+					<dt>Email Address:</dt>
+					<dd th:text="${liprofile.emailAddress}"></dd>
+					<dt>Headline:</dt>
+					<dd th:text="${liprofile.headline}"></dd>
+					<dt>Industry:</dt>
+					<dd th:text="${liprofile.industry}"></dd>
+					<dt>Summary:</dt>
+					<dd th:text="${liprofile.summary}"></dd>
+				</dl>
+			</div>
+			<div class="col-md-4">
+				<h3>Your Twitter Profile</h3>
+
+				<p>
+					Hello, <span th:text="${twprofile.name}">name</span>!
+				</p>
+				<img th:src="${twprofile.profileImageUrl}" class="img-responsive" />
+				<dl>
+					<dt>Twitter ID:</dt>
+					<dd th:text="${twprofile.id}">profile id</dd>
+					<dt>Screen name:</dt>
+					<dd>
+						<a th:href="${twprofile.profileUrl}" target="_blank"
+							th:text="${twprofile.screenName}">screen name</a>
+					</dd>
+					<dt>Description:</dt>
+					<dd th:text="${twprofile.description}">description</dd>
+					<dt>Location:</dt>
+					<dd th:text="${twprofile.location}">location</dd>
+					<dt>URL:</dt>
+					<dd>
+						<a th:href="${twprofile.url}" th:text="${twprofile.url}">profile
+							url</a>
+					</dd>
+				</dl>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h3>Your Facebook Feed</h3>
+				<ul class="feedList">
+					<li class="post" th:each="post : ${fbfeed}">
+						<p>
+							<img th:if="${!#strings.isEmpty(post.picture)}"
+								th:src="${post.picture}" align="top" class="img-responsive" />
+							<span th:text="${post.message}">message</span> - <span
+								th:text="${post.name}">name</span>
+						</p>
+					</li>
+				</ul>
+
+
+			</div>
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<h3>Your Twitter Home Timeline</h3>
+
+				<div class="feed">
+					<ul class="imagedList">
+						<li class="imagedItem" th:each="tweet : ${timeline}">
+							<div class="image"
+								th:if="${!#strings.isEmpty(tweet.profileImageUrl)}">
+								<img th:src="${tweet.profileImageUrl}" align="left" />
+							</div>
+							<div class="content">
+								<strong><a
+									th:href="'http://twitter.com/' + ${tweet.fromUser}"
+									th:text="${tweet.fromUser}">from user</a></strong><br /> <span
+									th:text="${tweet.text}">tweet text</span><br /> <span
+									class="postTime" th:text="${tweet.createdAt}">created at</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
